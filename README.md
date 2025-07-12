@@ -1,7 +1,6 @@
-#**🤝 Skill Swap Platform – Exchange Skills, Empower Each Other**  
-> This is a quoted block. It appears lighter.
+# 🤝 **Skill Swap Platform** – Exchange Skills, Empower Each Other
 
-This project was developed as part of our academic initiative.
+>This project was developed as part of our academic initiative.
 Skill Swap Platform is a collaborative and structured mini application that allows users to list skills they can offer and request others in return.
 With user-friendly features, admin tools, and peer interaction, it encourages mutual learning and community growth.
 
