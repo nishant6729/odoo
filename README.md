@@ -43,7 +43,21 @@ Admins can:
 - Generate reports:
   - User activity  
   - Feedback logs  
-  - Swap statistics  
+  - Swap statistics
+
+### 6. Portfolio Generator
+- Users can generate a professional portfolio based on their profile
+- Includes name, photo, skills, ratings, and feedback
+- Shareable link or downloadable PDF version
+- Automatically updated as users gain new experience
+
+### 7. Chatbot Assistant
+- In-app chatbot for help, suggestions, and quick navigation
+- Ask questions like:
+  - "How do I send a swap request?"
+  - "What are my pending requests?"
+  - "Suggest me a new skill to learn."
+- Rule-based logic or AI-powered for smart responses
 
 ## 🛠 Tech Stack
 
@@ -58,6 +72,7 @@ Admins can:
 - Nishant Gurjar  nishantgurjar6729@gmail.com
 - Naman Jain    namanjain1237752@gmail.com
 - Shruti Yadav   2023KUEC2067@iiitkota.ac.in
+
 
 >🙌 Thank you for reviewing our project!
 The Skill Swap Platform promotes equal opportunity learning by letting people both teach and learn —
