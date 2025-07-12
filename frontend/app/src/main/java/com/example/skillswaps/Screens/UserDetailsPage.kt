@@ -48,8 +48,10 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.ModalNavigationDrawer
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
@@ -63,6 +65,7 @@ import androidx.compose.ui.graphics.asComposeRenderEffect
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -88,6 +91,8 @@ fun UserListScreen(
     val coroutineScope = rememberCoroutineScope()
     //Drawer ke liye
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    var searchQuery by remember { mutableStateOf("") }
+
 
     // State: list of loaded users
     val users = remember { mutableStateListOf<User>() }
@@ -345,6 +350,30 @@ fun HomeContent(onMenuClick:()->Unit,
     var isSelected by remember{
         mutableStateOf("home")
     }
+    // Inside your HomeContent composable:
+
+    var searchQuery by remember { mutableStateOf("") }
+
+    val filteredUsers by remember {
+        derivedStateOf {
+            if (searchQuery.isBlank()) {
+                // No query → show all users
+                users.toList()
+            } else {
+                // Query present → filter by name or skill
+                users.filter { user ->
+                    user.firstName.contains(searchQuery, ignoreCase = true) ||
+                            user.lastName.contains(searchQuery, ignoreCase = true) ||
+                            user.skills.any { it.contains(searchQuery, ignoreCase = true) }
+                }
+            }
+        }
+    }
+
+// Then use `filteredUsers` in your LazyColumn:
+// items(filteredUsers) { … }
+
+
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val coroutineScope=rememberCoroutineScope()
     Scaffold(topBar = {
@@ -356,12 +385,27 @@ fun HomeContent(onMenuClick:()->Unit,
                     IconButton(onClick = onMenuClick,modifier=Modifier.size(36.dp)) {
                         Icon(painter = painterResource(R.drawable.menu), contentDescription = null,tint=Color.White)
                     }
+                    Spacer(modifier=Modifier.width(10.dp))
+                    OutlinedTextField(
+                        value = searchQuery,
+                        onValueChange = { searchQuery = it },
+                        placeholder = { Text("Search users or skills", fontSize = 12.sp) },
+                        singleLine = true,
+                        textStyle = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.SemiBold),
+                        modifier = Modifier
+                            .weight(1.5f)
+                            .height(50.dp),
+
+                    )
+
                 }
             }
             , actions = {
                 Row(modifier=Modifier
                     .wrapContentSize()
                     .padding(16.dp)){
+
+
                     IconButton(onClick = {
 
                     },modifier=Modifier.size(36.dp)) {
@@ -475,7 +519,7 @@ fun HomeContent(onMenuClick:()->Unit,
                     modifier = Modifier.padding(16.dp))
 
             }
-            items(users) { user ->
+            items(filteredUsers) { user ->
                 if(user.uid!= FirebaseAuth.getInstance().currentUser?.uid){
                     UserCard(user = user, onClick = { navController.navigate("detailsPage/${user.uid}") })
                 }
