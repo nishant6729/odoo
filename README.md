@@ -24,9 +24,7 @@ Develop a Skill Swap Platform — a mini application that enables users to list 
     
 
 ## Team Members
-
-| Name              | Email                       |
-|  Vikas Kumar      | vikumar162006@gmail.com     |
-|  Nishant Gurjar   | nishantgurjar6729@gmail.com |
-|  Naman Jain       | namanjain1237752@gmail.com  |
-|  Shruti Yadav     | 2023KUEC2067@iiitkota.ac.in |
+- Vikas Kumar  vikumar162006@gmail.com
+- Nishant Gurjar  nishantgurjar6729@gmail.com
+- Naman Jain    namanjain1237752@gmail.com
+- Shruti Yadav   2023KUEC2067@iiitkota.ac.in
