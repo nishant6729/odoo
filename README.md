@@ -10,7 +10,7 @@ With user-friendly features, admin tools, and peer interaction, it encourages mu
 Many individuals possess talents or knowledge but lack the means to share and exchange them in a structured, trusted environment. 
 The Skill Swap Platform bridges this gap by enabling people to connect, collaborate, and swap skills—fostering a self-sustaining learning ecosystem.
 
-## ✨ Key Features
+## ✨ Key 
 
 ### 1. Basic User Profile
 - Name, email, and contact information  
